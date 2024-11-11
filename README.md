@@ -1,7 +1,7 @@
 # Apple
 
 ## Description
-Welcome to the Apple page! Here you will find amazing apple products that just came out with new features that will blow your mind! Youw ill be able to to see how it functions along with witnessing what makes them stand out from one another! Enjoy your search with n
+Welcome to the Apple page! Here you will find amazing apple products that just came out with new features that will blow your mind! You will be able to to see how it functions along with witnessing what makes them stand out from one another! Enjoy your search with new products!
 
 ## Table of Contents
  * [Description](#description)
