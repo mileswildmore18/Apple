@@ -89,6 +89,7 @@ canvas {
     @apply ml-4 p-4 rounded-full bg-gray-300 backdrop-blur flex-center
   }
 
+  /* Make the title of the featured product hidden then appear when user accesses the page with animation */
   .hero-title {
     @apply text-center font-semibold text-3xl text-gray-100 opacity-0 max-md:mb-10
   }
