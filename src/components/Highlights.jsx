@@ -2,6 +2,7 @@
 import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
 import { rightImg, watchImg } from "../utils"
+import VideoCarousel from "./VideoCarousel"
 // Add the Highlight section
 const Highlights = () => {
     useGSAP(() => {
@@ -15,7 +16,7 @@ const Highlights = () => {
     // Fill the entire width and height of the section with no scroll bar
     <section id="highlights" className="w-screen overflow-hidden h-full common-padding bg-zinc">
         <div className="screen-max-width">
-            {/* Show highlights on the left and events on the right on large and medium deices */}
+            {/* Show highlights on the left and events on the right on large and medium devices */}
             <div className="mb-12 w-full md:flex items-end justify-between">
                 <h1 id="title" className="section-heading">Get the highlights!</h1>
                 {/* Add events that will be spread out from each other */}
@@ -30,6 +31,8 @@ const Highlights = () => {
                     </p>
                 </div>
             </div>
+            {/* Add the video Carousel from the Carousel React file */}
+            <VideoCarousel></VideoCarousel>
         </div>
     </section>
   )

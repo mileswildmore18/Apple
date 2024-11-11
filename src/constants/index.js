@@ -13,6 +13,7 @@ import {
 //   Add it to the the NavBar file
   export const navLists = ["Store", "Mac", "iPhone", "Support"];
   
+//   Add it to the Video Carousel jsx file
   export const hightlightsSlides = [
     {
       id: 1,
