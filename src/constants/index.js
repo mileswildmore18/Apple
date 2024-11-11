@@ -10,6 +10,7 @@ import {
     yellowImg,
   } from "../utils";
   
+//   Add it to the the NavBar file
   export const navLists = ["Store", "Mac", "iPhone", "Support"];
   
   export const hightlightsSlides = [
