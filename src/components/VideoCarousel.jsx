@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { hightlightsSlides } from "../constants";
 import { pauseImg, playImg, replayImg } from "../utils";
 import { useGSAP } from "@gsap/react";
-
+import gsap from "gsap";
 // Add video carousel properties to display different items
 const VideoCarousel = () => {
   const videoRef = useRef([]);
@@ -25,21 +25,19 @@ const VideoCarousel = () => {
 
   //Animate the video playing
   useGSAP(() => {
-    //website breaks here*************************************************************
-    // gsap.to('#video', {
-    //     scrollTrigger: {
-    //         trigger: '#video',
-    //         toggleActions: 'restart none none none'
-    //     },
-    //     onComplete: () => {
-    //         setVideo((prevVideo) => ({
-    //             ...prevVideo,
-    //             startPlay: true,
-    //             isPLaying: true
-    //         }))
-    //     }
-    // })
-    // end of error*********************************************************************
+    gsap.to('#video', {
+        scrollTrigger: {
+            trigger: '#video',
+            toggleActions: 'restart none none none'
+        },
+        onComplete: () => {
+            setVideo((prevVideo) => ({
+                ...prevVideo,
+                startPlay: true,
+                isPLaying: true
+            }))
+        }
+    })
   }, [isEnd, videoId])
   //Start Current video
   useEffect(() => {
@@ -52,10 +50,9 @@ const VideoCarousel = () => {
     }
   }, [startPlay, videoId, isPLaying, loadedData]);
 
-// new code added Add Meta data to videos*********************************************************************
+    //Add Meta data to videos
   const handleLoadedMetadata = (i, e) => setLoadedData
   ((pre) => [...pre, e])
-  //end of new code*****************************************************************
 
   // Play the videos
   useEffect(() => {
@@ -66,7 +63,21 @@ const VideoCarousel = () => {
       //animate the progress of the video
       let anim = gsap.to(span[videoId], {
         // Check what happens after the video updates to next animation
-        onUpdate: () => {},
+        onUpdate: () => {
+            const progress = Math.ceil(anim.progress() * 100);
+
+            if(progress != currentProgress) {
+                currentProgress = progress;
+                // adjust window based on different mobile devices or small windows
+                gsap.to(videoDivRef.current[videoId], {
+                    width: window.innerWidth < 760
+                    ? '10vw'
+                    : window.innerWidth < 1200
+                        ? '10vw'
+                        : '4vw'
+                })
+            }
+        },
         // Check what happens after the animation on the video finishes
         onComplete: () => {},
       });
@@ -127,9 +138,8 @@ const VideoCarousel = () => {
                       isPLaying: true,
                     }));
                   }}
-                //   new code, Trigger the event when Meta data is loaded*****************************************************
-                  onLoadedMetadata={(e) => handleLoadedMetadata(i,e)}
-                //   end of new code******************************************************************************************
+                //  Trigger the event when Meta data is loaded
+                  onLoadedMetadata={(e) => handleLoadedMetadata(i, e)}
                 >
                   <source src={list.video} type="video/mp4" />
                 </video>
