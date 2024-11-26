@@ -56,7 +56,7 @@ const VideoCarousel = () => {
 
   // Play the videos
   useEffect(() => {
-    const currentProgress = 0;
+    let currentProgress = 0;
     let span = videoSpanRef.current;
 
     if (span[videoId]) {
@@ -75,6 +75,11 @@ const VideoCarousel = () => {
                     : window.innerWidth < 1200
                         ? '10vw'
                         : '4vw'
+                })
+
+                gsap.to(span[videoId], {
+                    width: `${currentProgress}%`,
+                    backgroundColor: 'white'
                 })
             }
         },
