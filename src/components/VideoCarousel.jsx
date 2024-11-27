@@ -26,8 +26,15 @@ const VideoCarousel = () => {
   // Deconstruct the file
   const { isEnd, isLastVideo, startPlay, videoId, isPLaying } = video;
 
-  //Animate the video playing
+  
   useGSAP(() => {
+    //Animate the slider
+    gsap.to('#slider', {
+        transform: `translateX(${-100 * videoId}%)`,
+        duration: 2,
+        ease: 'power2.inOut'
+    })
+    //Animate the video playing
     gsap.to("#video", {
       scrollTrigger: {
         trigger: "#video",
@@ -105,7 +112,7 @@ const VideoCarousel = () => {
       //  Update the animation bar
       const animUpdate = () => {
         anim.progress(
-          videoRef.current[videoId] / hightlightsSlides[videoId].videoDuration
+          videoRef.current[videoId].currentTime / hightlightsSlides[videoId].videoDuration
         );
       };
 
@@ -138,6 +145,13 @@ const VideoCarousel = () => {
         }));
         break;
       case "play":
+        setVideo((prevVideo) => ({
+          ...prevVideo,
+          isPLaying: !prevVideo.isPLaying,
+          videoId: 0,
+        }));
+        break;
+        case "pause":
         setVideo((prevVideo) => ({
           ...prevVideo,
           isPLaying: !prevVideo.isPLaying,
