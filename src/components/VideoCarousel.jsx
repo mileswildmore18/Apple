@@ -177,6 +177,9 @@ const VideoCarousel = () => {
                   playsInline={true}
                   preload="auto"
                   muted
+                  className={`${
+                    list.id === 2 && 'translate-x-44'} pointer-events-none
+                    `}
                   ref={(el) => (videoRef.current[i] = el)}
                  // Move to next video on next span dot and expand the duration of the next spans
                   onEnded={() => 
