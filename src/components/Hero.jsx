@@ -11,7 +11,7 @@ const Hero = () => {
   );
   // Make the video go horizontal on larger screens and vertically on smaller screens
   const handleVideoSrcSet = () => {
-    if (windows.innerWidth < 760) {
+    if (window.innerWidth < 760) {
       setVideoSrc(smallHeroVideo);
     } else {
       setVideoSrc(heroVideo);

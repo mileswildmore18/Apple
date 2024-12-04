@@ -3,7 +3,9 @@ import gsap from "gsap";
 import ModelView from "./ModelView";
 import { useRef, useState } from "react";
 import { yellowImg } from "../utils";
-
+import { Canvas } from "@react-three/fiber";
+import { View } from "@react-three/drei";
+import { models, sizes } from "../constants";
 // Import Three JS
 import * as THREE from "three";
 
@@ -41,7 +43,7 @@ const [largeRotation, setLargeRotation] = useState(0);
         {/* View the models of the phones */}
         <div className="flex flex-col item-center mt-5">
             <div className="w-full h-[75vh] md:h-[90vh] overflow-hidden relative">
-                {/* Pass important information from Model to view phone for reference */}
+                {/* Pass important information from Model to view phone for reference on small view*/}
                 <ModelView 
                     index={1}
                     groupRef={small}
@@ -51,6 +53,55 @@ const [largeRotation, setLargeRotation] = useState(0);
                     item={model}
                     size={size}
                 />
+                {/* Pass important information from Model to view phone for reference on large view*/}
+                <ModelView 
+                    index={2}
+                    groupRef={large}
+                    gsapType="view2"
+                    controlRef={cameraControlLarge}
+                    setRotationState={setLargeRotation}
+                    item={model}
+                    size={size}
+                />
+
+                <Canvas
+                // View canvas in full and reset position
+                className="w-full h-full"
+                    style={{
+                        position: 'fixed',
+                        top: 0,
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                        overflow: 'hidden'
+                    }}
+                    eventSource={document.getElementById('root')}
+                    >
+                    <View.Port />
+                </Canvas>
+            </div>
+            {/* Add title for each product */}
+            <div classname="mx-auto w-full">
+                <p className="text-sm font-light text-center mb-5">{model.title}</p>
+                {/* Add different colors for the products */}
+                <div className="flex-center">
+                    <ul className="color-container">
+                        {/* Add color options */}
+                        {models.map((item, i) => (
+                            <li key={i} className="w-6 h-6 rounded-full mx-2 cursor-pointer" style={{backgroundColor: item.color[0] }} onClick={() => setModel(item)} />
+                        ))}
+                    </ul>
+                    {/* Add button sizes */}
+                    <button className="size-btn-container">
+                        {sizes.map(({label, value}) => (
+                            <span key={label} className ="size-btn"
+                            // Choose button
+                            style={{ backgroundColor: size === value ? 'white' : 'transparent', color: size === value ? 'black' : 'white'}} onClick={() => setSize(value)}>
+                                {label}
+                            </span>
+                        ))}
+                    </button>
+                </div>
             </div>
         </div>
       </div>
