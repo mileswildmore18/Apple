@@ -8,6 +8,7 @@ import { View } from "@react-three/drei";
 import { models, sizes } from "../constants";
 // Import Three JS
 import * as THREE from "three";
+import { animateWithGsapTimeline } from "../utils/animations";
 
 const Model = () => {
     // Choose what phone to look at in the model at small or large size and different color textures
@@ -35,12 +36,19 @@ const [largeRotation, setLargeRotation] = useState(0);
 const tl = gsap.timeline();
 
 useEffect(() => {
+    // Show timeline for large iPhone model
     if(size === 'large') {
-
+        animateWithGsapTimeline(tl, small, smallRotation, '#view1', '#view2', {
+            transform: 'translateX(-100%)',
+            duration: 2
+        })
     }
-
+    // Show timeline for small iPhone model
     if(size === 'small') {
-
+        animateWithGsapTimeline(tl, large, largeRotation, '#view2', '#view1', {
+            transform: 'translateX(0)',
+            duration: 2
+        })
     }
 }, [size])
 
