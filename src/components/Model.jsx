@@ -1,7 +1,7 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ModelView from "./ModelView";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { yellowImg } from "../utils";
 import { Canvas } from "@react-three/fiber";
 import { View } from "@react-three/drei";
@@ -30,6 +30,20 @@ const large = useRef(new THREE.Group());
 // Add rotation 
 const [smallRotation, setSmallRotation] = useState(0);
 const [largeRotation, setLargeRotation] = useState(0);
+
+// Create timeline for phone sizes
+const tl = gsap.timeline();
+
+useEffect(() => {
+    if(size === 'large') {
+
+    }
+
+    if(size === 'small') {
+
+    }
+}, [size])
+
   // Add animation to the header
   useGSAP(() => {
     gsap.to("#heading", { y: 0, opacity: 1 });

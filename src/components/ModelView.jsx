@@ -1,5 +1,6 @@
 import { OrbitControls, PerspectiveCamera, View } from "@react-three/drei";
 
+import Loader from "./Loader";
 import * as THREE from 'three';
 import { Suspense } from "react";
 import Lights from "./Lights";
@@ -9,7 +10,7 @@ const ModelView = ({
   groupRef,
   gsapType,
   controlRef,
-  setRotationSize,
+  setRotationState,
   size,
   item,
 }) => {
@@ -43,7 +44,7 @@ const ModelView = ({
 
       <group ref={groupRef} name={`${index === 1} ? 'small' : 'large'`} position={[0, 0, 0]}>
         {/* Load the feature */}
-        <Suspense fallback={<div>Loading</div>}>
+        <Suspense fallback={<Loader />}>
         <IPhone 
         // Enlarge the phone to see it 
             scale={index === 1 ? [15, 15, 15] : [17, 17, 17]}
