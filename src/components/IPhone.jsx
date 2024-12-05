@@ -146,7 +146,10 @@ useEffect(() => {
         geometry={nodes.xXDHkMplTIDAXLN.geometry}
         material={materials.pIJKfZsazmcpEiU}
         scale={0.01}
-      />
+      >
+        {/* Apply the colour texture to the phone screen to match the cover of the phone */}
+        <meshStandardMaterial roughness={1} map={texture}/>
+      </mesh>
       <mesh
         castShadow
         receiveShadow
