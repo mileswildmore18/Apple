@@ -42,6 +42,7 @@ const ModelView = ({
       />
 
       <group ref={groupRef} name={`${index === 1} ? 'small' : 'large'`} position={[0, 0, 0]}>
+        {/* Load the feature */}
         <Suspense fallback={<div>Loading</div>}>
         <IPhone 
         // Enlarge the phone to see it 
