@@ -33,7 +33,7 @@ const Lights = () => {
       </Environment>
 
       {/* Create a light source positioned at a specif point in the scene emitting light in a specific direction */}
-      <spotlight
+      <spotLight
         position={[-2, 10, 5]}
         angle={0.15}
         penumbra={1} // Soft edge of a shadow cast by a point light
@@ -41,7 +41,7 @@ const Lights = () => {
         intensity={Math.PI * 0.2} // light intensity
         color={"#f8f9fa"}
       />
-      <spotlight
+      <spotLight
         position={[0, -25, 10]}
         angle={0.15}
         penumbra={1}
@@ -49,7 +49,7 @@ const Lights = () => {
         intensity={Math.PI * 0.2}
         color={"#f8f9fa"}
       />
-      <spotlight
+      <spotLight
         position={[0, 15, 5]}
         angle={0.15}
         penumbra={1}
