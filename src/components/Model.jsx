@@ -12,9 +12,9 @@ import { animateWithGsapTimeline } from "../utils/animations";
 
 const Model = () => {
     // Choose what phone to look at in the model at small or large size and different color textures
- const [size, setSize ] = useState('small');
+ const [size, setSize] = useState('small');
 //  Specify model details
- const [model, setModel ] = useState({
+ const [model, setModel] = useState({
     title: 'iPhone 15 Pro in Natural Titanium',
     color: ['#8F8A81', '#FFE7B9', '#6F6C64'],
     img: yellowImg, 
