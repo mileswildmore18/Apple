@@ -1,8 +1,21 @@
+import { useGSAP } from '@gsap/react';
 import React from 'react'
+import { animateWithGsap } from '../utils/animations';
 
 const Features = () => {
+    // Use gsap to animate the header
+    useGSAP(() => {
+       animateWithGsap('#features_title',{y: 0, opacity: 1})
+    },[]);
+
   return (
-    <div>Features</div>
+    <section className='h-full common-padding bg-zinc relative overflow-hidden'>Features
+    <div className='screen-max-width'>
+       <div className='mb-12 w-full'>
+        <h1 id='features_title' className='section-heading'>Explore the full story.</h1>
+        </div> 
+    </div>
+    </section>
   )
 }
 
