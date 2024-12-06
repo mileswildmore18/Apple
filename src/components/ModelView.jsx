@@ -15,13 +15,13 @@ const ModelView = ({
   item,
 }) => {
   return (
-    // View each item in the model
+    // View each item in the model window
     <View
       index={index}
       id={gsapType}
-      className={`w-full h-full ${
-        index === 2
-      } ? 'right-[-100%] : ''`}
+      className={`w-full h-full absolute ${
+        index === 2  ? 'right-[-100%]' : ''
+      }`}
     >
       {/* Ambient Light */}
       <ambientLight intensity={0.3} />
