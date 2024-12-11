@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { chipImg, frameImg, frameVideo } from "../utils";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { animateWithGsap } from "../utils/animations";
 
 const HowItWorks = () => {
     // Animate the video for HowItWorks
@@ -61,6 +62,28 @@ const HowItWorks = () => {
               </video>
             </div>
           </div>
+          <p className="text-blue font-semibold text-center mt-3">Honkai: Star Rail</p>
+
+          <div className="hiw-text-container">
+                <div className="flex flex-1 justify-center flex-col">
+                  <p className="hiw-text g_text">
+                    A17 Pro is an entirely new class of iPhone chip that delivers our {" "}
+                    <span className="text-white">
+                      best graphic performance by far
+                    </span>.
+                  </p>
+                </div>
+                <div className="flex-1 flex-center">
+                  <p className="feature-text g_text">
+                    Titanium has one of the best stength-to-weight-ratios of any
+                    metal, making these our{" "}
+                    <span className="text-white">
+                      lightest Pro models ever.
+                    </span>
+                    , You'll notice the difference the moment you pick one up
+                  </p>
+                </div>
+              </div>
         </div>
       </div>
     </section>
