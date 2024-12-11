@@ -2,12 +2,25 @@ import { useGSAP } from "@gsap/react";
 import React, { useRef } from "react";
 import { animateWithGsap } from "../utils/animations";
 import { explore1Img, explore2Img, exploreVideo } from "../utils";
+import gsap from 'gsap';
 
 const Features = () => {
   // Trigger the video to play after scrolling to it
   const videoRef = useRef();
-  // Use gsap to animate the header, images and the description of the phones
+  // Use gsap to animate the header, images and the description of the phones along with features
   useGSAP(() => {
+    // Animate the video for exploring features
+    gsap.to('#exploreVideo', {
+      scrollTrigger: {
+          trigger: '#exploreVideo',
+          toggleActions: 'play pause reverse restart', // Figure what happens with specific animation in 4 different places
+          start: '-10% bottom',
+      },
+      // Make video play again if user scrolls to view the video again
+      onComplete: () => {
+        videoRef.current.play();
+      }
+  })
     animateWithGsap("#features_title", { y: 0, opacity: 1 });
     animateWithGsap(
       ".g_grow",
@@ -51,6 +64,7 @@ const Features = () => {
                 <source src={exploreVideo} type="video/mp4" />
               </video>
             </div>
+            {/* Display the pictures that zoom in and out when user scrolls towards the pictures */}
             <div className="flex flex-col w-full relative">
               <div className="feature-video-container">
                 <div className="overflow-hidden flex-1 h-[50vh]">
@@ -68,15 +82,24 @@ const Features = () => {
                   />
                 </div>
               </div>
-
+                {/* Display the description that appears when user scrolls the bottom of the screen to see the information about the iPhone */}
               <div className="feature-text-container">
                 <div className="flex-1 flex-center">
                     <p className="feature-text g_text">
                         iPhone 15 Pro is {' '}
                         <span className="text-white">
                         the first iPhone to feature an aerospace-grade titanium design 
-                        </span>
+                        </span>,
                         using the same alloy that spacecrafts use for missions to Mars.
+                    </p>
+                </div>
+                <div className="flex-1 flex-center">
+                    <p className="feature-text g_text">
+                        Titanium has one of the best stength-to-weight-ratios of any metal, making these our {' '}
+                        <span className="text-white">
+                        lightest Pro models ever.
+                        </span>, 
+                        You'll notice the difference the moment you pick one up
                     </p>
                 </div>
               </div>
