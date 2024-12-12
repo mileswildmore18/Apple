@@ -5,8 +5,9 @@ import gsap from "gsap";
 import { animateWithGsap } from "../utils/animations";
 
 const HowItWorks = () => {
-    // Animate the video for HowItWorks
+  // Animate the video for HowItWorks
   const videoRef = useRef();
+
   useGSAP(() => {
     // Animate the image of the chip easing into frame from large size to normal size
     gsap.from("#chip", {
@@ -19,12 +20,19 @@ const HowItWorks = () => {
       duration: 2,
       ease: "power2.inOut",
     });
+    // Animate the texture for how the product works below the video
+    animateWithGsap(".g_fadeIn", {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: "power2.inOut",
+    });
   }, []);
 
   return (
     // Add a image showing the chip in the center of the section
     <section className="common-padding">
-      <div className="screen=max-width">
+      <div className="screen-max-width">
         <div id="chip" className="flex-center w-full my-20">
           <img src={chipImg} alt="chip" width={180} height={180} />
         </div>
@@ -51,7 +59,7 @@ const HowItWorks = () => {
             {/* Display the video */}
             <div className="hiw-video">
               <video
-                className="point-events-none"
+                className="pointer-events-none"
                 playsInline
                 preload="none"
                 muted
@@ -62,28 +70,34 @@ const HowItWorks = () => {
               </video>
             </div>
           </div>
-          <p className="text-blue font-semibold text-center mt-3">Honkai: Star Rail</p>
+          <p className="text-blue font-semibold text-center mt-3">
+            Honkai: Star Rail
+          </p>
+        </div>
+        {/* Add description about the product */}
+        <div className="hiw-text-container">
+          <div className="flex flex-1 justify-center flex-col">
+            <p className="hiw-text g_fadeIn">
+              A17 Pro is an entirely new class of iPhone chip that delivers our{" "}
+              <span className="text-white">
+                best graphic performance by far
+              </span>
+              .
+            </p>
 
-          <div className="hiw-text-container">
-                <div className="flex flex-1 justify-center flex-col">
-                  <p className="hiw-text g_text">
-                    A17 Pro is an entirely new class of iPhone chip that delivers our {" "}
-                    <span className="text-white">
-                      best graphic performance by far
-                    </span>.
-                  </p>
-                </div>
-                <div className="flex-1 flex-center">
-                  <p className="feature-text g_text">
-                    Titanium has one of the best stength-to-weight-ratios of any
-                    metal, making these our{" "}
-                    <span className="text-white">
-                      lightest Pro models ever.
-                    </span>
-                    , You'll notice the difference the moment you pick one up
-                  </p>
-                </div>
-              </div>
+            <p className="hiw-text g_fadeIn">
+              Mobile{" "}
+              <span className="text-white">
+                games will look and feel so immersive
+              </span>
+              , with incredibly detailed environments and characters.
+            </p>
+          </div>
+          <div className="flex-1 flex justify-center flex-col g_fadeIn">
+            <p className="hiw-text">New</p>
+            <p className="hiw-bigtext">Pro-class GPU</p>
+            <p className="hiw-text">with 6 cores</p>
+          </div>
         </div>
       </div>
     </section>
