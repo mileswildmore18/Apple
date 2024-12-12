@@ -103,7 +103,7 @@ useEffect(() => {
                 </Canvas>
             </div>
             {/* Add title for each product */}
-            <div classname="mx-auto w-full">
+            <div className="mx-auto w-full">
                 <p className="text-sm font-light text-center mb-5">{model.title}</p>
                 {/* Add different colors for the products */}
                 <div className="flex-center">
